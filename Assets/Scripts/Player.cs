@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] PlayerProjectileBehavior playerLaserProjectile;
 	[SerializeField] [Range(1f, 10f)] float moveSpeed = 2.5f;
 	[SerializeField] bool updateMoveBoundaries = false;
-	[SerializeField] [Range(0.01f, 1000f)] float shootFrequency;
+	[SerializeField] [Range(0.001f, 1f)] float shootFrequency;
 	bool nextProjectile = true;
 	float timer = 0f;
 	float minXPos;
@@ -35,8 +35,16 @@ public class Player : MonoBehaviour {
 	IEnumerator ProjectileDelay()
 	{
 		yield return new WaitForSeconds(shootFrequency);
-		print("Coroutine Done");
-		nextProjectile = true;
+		{
+			Instantiate
+				(playerLaserProjectile, new Vector3(
+					this.gameObject.transform.position.x,
+					this.gameObject.transform.position.y,
+					this.gameObject.transform.position.z),
+					Quaternion.identity);
+			timer = 0f;
+			nextProjectile = true;
+		}
 	}
 
 	void ShipMovement()
@@ -66,28 +74,10 @@ public class Player : MonoBehaviour {
 
 	void ShootProjectile()
 	{
-		//timer += Time.deltaTime;
-
-		if (!nextProjectile)
-		{
-			StartCoroutine(ProjectileDelay());
-		}
-
-		/*if (timer >= shootFrequency)
-		{
-			nextProjectile = true;
-		}*/
-
 		if (Input.GetAxis("Fire1") > 0 && nextProjectile)
 		{
-			Instantiate
-				(playerLaserProjectile, new Vector3(
-					this.gameObject.transform.position.x, 
-					this.gameObject.transform.position.y, 
-					this.gameObject.transform.position.z), 
-					Quaternion.identity);
-			timer = 0f;
 			nextProjectile = false;
+			StartCoroutine(ProjectileDelay());
 		}
 	}
 
@@ -107,8 +97,11 @@ public class Player : MonoBehaviour {
 		maxYPos = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log(collision.collider.name);
+		if(collision.gameObject.name == "Enemy")
+		{
+			Destroy(gameObject);
+		}
 	}
 }

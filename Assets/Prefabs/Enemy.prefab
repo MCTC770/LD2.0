@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4602706639965566}
   - component: {fileID: 212131031619641146}
   - component: {fileID: 60877520987137036}
+  - component: {fileID: 114300113120445644}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -90,6 +91,23 @@ PolygonCollider2D:
       - {x: 0.41549665, y: -0.19901752}
       - {x: 0.43450984, y: -0.23228788}
       - {x: 0.45908868, y: -0.23372602}
+--- !u!114 &114300113120445644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811581438638552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f5e37931a0a5d42b792c2cfd471576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 4180466105372278, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
+  - {fileID: 4437342303623916, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
+  - {fileID: 4019767917900946, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
+  enemyMovementSpeed: 0.05
+  enableBackAndForthPattern: 1
 --- !u!212 &212131031619641146
 SpriteRenderer:
   m_ObjectHideFlags: 1

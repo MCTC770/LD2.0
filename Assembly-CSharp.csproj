@@ -62,8 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyPathing.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerProjectileBehavior.cs" />
+    <Compile Include="Assets\Scripts\WaveConfig.cs" />
     <None Include="Assets\Space Shooter Visual Assets\license.txt" />
     <None Include="Assets\Space Shooter Visual Assets\Spritesheet\sheet.xml" />
     <Reference Include="UnityEditor.StandardEvents">

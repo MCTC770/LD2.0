@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
 
-	[SerializeField] List<Transform> waypoints;
+	[SerializeField] WaveConfig waveConfig;
+	List<Transform> waypoints;
 	[SerializeField][Range(1, 10)] float enemySpeed = 0.05f;
 	[SerializeField] bool enableBackAndForthPattern = true;
 	Transform nextWaypoint;
@@ -14,6 +15,7 @@ public class EnemyPathing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		waypoints = waveConfig.GetWaypoints();
 		nextWaypoint = waypoints[waypointCounter];
 		transform.position = waypoints[0].position;
 	}
@@ -21,7 +23,7 @@ public class EnemyPathing : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		enemyMovementSpeed = enemySpeed * Time.deltaTime;
+		enemyMovementSpeed = waveConfig.GetMoveSpeed() * Time.deltaTime;
 		MovementPattern();
 	}
 

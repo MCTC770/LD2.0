@@ -102,11 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f5e37931a0a5d42b792c2cfd471576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 4180466105372278, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
-  - {fileID: 4437342303623916, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
-  - {fileID: 4019767917900946, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
-  enemyMovementSpeed: 0.05
+  waveConfig: {fileID: 11400000, guid: 9df84e23c09c61543967982f4abcc771, type: 2}
+  enemySpeed: 0.05
   enableBackAndForthPattern: 1
 --- !u!212 &212131031619641146
 SpriteRenderer:

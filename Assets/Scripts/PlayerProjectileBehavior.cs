@@ -25,7 +25,7 @@ public class PlayerProjectileBehavior : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.gameObject.name == "Enemy")
+		if(collision.gameObject.GetComponents<EnemyPathing>().Length >= 1)
 		{
 			Destroy(collision.gameObject);
 			Destroy(gameObject);

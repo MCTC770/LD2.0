@@ -8,6 +8,9 @@ public class Player : MonoBehaviour {
 	[SerializeField] [Range(1f, 10f)] float moveSpeed = 2.5f;
 	[SerializeField] bool updateMoveBoundaries = false;
 	[SerializeField] [Range(0.001f, 1f)] float shootFrequency;
+	[SerializeField] PlayerProjectileBehavior[] projectileStorageArray;
+	int projectileStorageCount = 8;
+	int projectileCounter = 0;
 	bool nextProjectile = true;
 	float timer = 0f;
 	float minXPos;
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour {
 	void Start ()
 	{
 		MoveBoundaries();
+		ProjectileStorageArrayCreator();
 		QualitySettings.vSyncCount = 1;
 	}
 
@@ -32,16 +36,34 @@ public class Player : MonoBehaviour {
 		ShootProjectile();
 	}
 
+	void ProjectileStorageArrayCreator()
+	{
+		projectileStorageArray = new PlayerProjectileBehavior[] 
+		{ playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
+			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
+			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
+			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile };
+		for(int i = 0; i < projectileStorageCount; i++)
+		{
+			projectileStorageArray[i].gameObject.name = "Player Laser " + i;
+			Instantiate(projectileStorageArray[i], new Vector3(-100, 0, 0), Quaternion.identity);
+		}
+		print(projectileStorageArray[1]);
+	}
+
 	IEnumerator ProjectileDelay()
 	{
 		yield return new WaitForSeconds(shootFrequency);
 		{
-			Instantiate
-				(playerLaserProjectile, new Vector3(
-					this.gameObject.transform.position.x,
-					this.gameObject.transform.position.y,
-					this.gameObject.transform.position.z),
-					Quaternion.identity);
+			GameObject.Find("Player Laser " + projectileCounter + "(Clone)").GetComponent<PlayerProjectileBehavior>().move = true;
+			GameObject.Find("Player Laser " + projectileCounter + "(Clone)").transform.position = this.gameObject.transform.position;
+			if (projectileCounter < projectileStorageCount - 1)
+			{
+				projectileCounter += 1;
+			} else
+			{
+				projectileCounter = 0;
+			}
 			timer = 0f;
 			nextProjectile = true;
 		}

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
 
-	[SerializeField] WaveConfig waveConfig;
+	WaveConfig waveConfig;
 	List<Transform> waypoints;
-	[SerializeField][Range(1, 10)] float enemySpeed = 0.05f;
-	[SerializeField] bool enableBackAndForthPattern = true;
+	bool enableBackAndForthPattern;
 	Transform nextWaypoint;
 	int waypointCounter = 1;
 	bool moveDirectionForward = true;
@@ -15,9 +14,11 @@ public class EnemyPathing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		waveConfig.ResetWaypoints();
 		waypoints = waveConfig.GetWaypoints();
 		nextWaypoint = waypoints[waypointCounter];
 		transform.position = waypoints[0].position;
+		enableBackAndForthPattern = waveConfig.GetEnableBackAndForthPattern();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +26,11 @@ public class EnemyPathing : MonoBehaviour {
 	{
 		enemyMovementSpeed = waveConfig.GetMoveSpeed() * Time.deltaTime;
 		MovementPattern();
+	}
+
+	public void SetWaveConfig(WaveConfig theWave)
+	{
+		waveConfig = theWave;
 	}
 
 	private void MovementPattern()
@@ -46,9 +52,13 @@ public class EnemyPathing : MonoBehaviour {
 	private void OneWayMovementPattern()
 	{
 		waypointCounter += 1;
-		if (waypointCounter + 1 > waypoints.Count)
+		if (waypointCounter >= waypoints.Count)
 		{
 			waypointCounter = waypoints.Count - 1;
+		}
+		if (waypointCounter == waypoints.Count - 1 && this.gameObject.transform.position == waypoints[waypoints.Count - 1].transform.position)
+		{
+			Destroy(gameObject);
 		}
 		nextWaypoint = waypoints[waypointCounter];
 	}

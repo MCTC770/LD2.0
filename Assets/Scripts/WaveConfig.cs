@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Enemy Wave Config")]
-//[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpawnManagerScriptableObject", order = 1)]
 public class WaveConfig : ScriptableObject {
 
 	[SerializeField] GameObject enemyPrefab;
@@ -12,19 +11,28 @@ public class WaveConfig : ScriptableObject {
 	[SerializeField] float spawnRandomFactor = 0.3f;
 	[SerializeField] int numberOfEnemies = 5;
 	[SerializeField] float moveSpeed = 2f;
-	List<Transform> waypointList;
+	[SerializeField] bool enableBackAndForthPattern = false;
+	[SerializeField] List<Transform> waypointList;
 
 	public GameObject GetEnemyPrefab()
 	{
 		return enemyPrefab;
 	}
 
+	public void ResetWaypoints()
+	{
+		waypointList.Clear();
+	}
+
 	public List<Transform> GetWaypoints()
 	{
-		Transform[] waveWaypoints = pathPrefab.GetComponentsInChildren<Transform>();
-		foreach (Transform child in pathPrefab.transform)
+		if (waypointList.Count < pathPrefab.transform.childCount)
 		{
-			waypointList.Add(child);
+			Transform[] waveWaypoints = pathPrefab.GetComponentsInChildren<Transform>();
+			foreach (Transform child in pathPrefab.transform)
+			{
+				waypointList.Add(child);
+			}
 		}
 		return waypointList;
 	}
@@ -47,5 +55,10 @@ public class WaveConfig : ScriptableObject {
 	public float GetMoveSpeed()
 	{
 		return moveSpeed;
+	}
+
+	public bool GetEnableBackAndForthPattern()
+	{
+		return enableBackAndForthPattern;
 	}
 }

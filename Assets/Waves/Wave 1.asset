@@ -18,3 +18,9 @@ MonoBehaviour:
   spawnRandomFactor: 0.3
   numberOfEnemies: 5
   moveSpeed: 2
+  enableBackAndForthPattern: 0
+  waypointList:
+  - {fileID: 4745431410872012, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
+  - {fileID: 4110185021169404, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
+  - {fileID: 4271127425422388, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
+  - {fileID: 4466472342838220, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}

@@ -102,9 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f5e37931a0a5d42b792c2cfd471576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: 9df84e23c09c61543967982f4abcc771, type: 2}
-  enemySpeed: 0.05
-  enableBackAndForthPattern: 1
+  waveConfig: {fileID: 11400000, guid: 453597c6f547f6c4d92fb30e359b8ae3, type: 2}
+  enableBackAndForthPattern: 0
 --- !u!212 &212131031619641146
 SpriteRenderer:
   m_ObjectHideFlags: 1

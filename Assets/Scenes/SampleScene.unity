@@ -203,68 +203,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4466540721460124, guid: 30c9855f0165dbc4296732fb62d6c4d0,
     type: 2}
   m_PrefabInternal: {fileID: 1533074425}
---- !u!1001 &1409825153
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1655658488}
-    m_Modifications:
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114300113120445644, guid: 5bdbc63fb0902f74babebfafc1cad47c,
-        type: 2}
-      propertyPath: enemySpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114300113120445644, guid: 5bdbc63fb0902f74babebfafc1cad47c,
-        type: 2}
-      propertyPath: waveConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 453597c6f547f6c4d92fb30e359b8ae3,
-        type: 2}
-    - target: {fileID: 1811581438638552, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114300113120445644, guid: 5bdbc63fb0902f74babebfafc1cad47c,
-        type: 2}
-      propertyPath: enableBackAndForthPattern
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5bdbc63fb0902f74babebfafc1cad47c, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!4 &1451462514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4682730722265972, guid: 3bb571ba1c1774c47a2c9593014c627f,
@@ -307,16 +245,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4466540721460124, guid: 30c9855f0165dbc4296732fb62d6c4d0, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30c9855f0165dbc4296732fb62d6c4d0, type: 2}
   m_IsPrefabAsset: 0
---- !u!4 &1563956998 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4602706639965566, guid: 5bdbc63fb0902f74babebfafc1cad47c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1409825153}
 --- !u!1001 &1651509252
 Prefab:
   m_ObjectHideFlags: 0
@@ -442,7 +375,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1563956998}
   - {fileID: 1451462514}
   - {fileID: 1321083463}
   m_Father: {fileID: 0}
@@ -495,7 +427,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4682730722265972, guid: 3bb571ba1c1774c47a2c9593014c627f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114980459560606722, guid: 3bb571ba1c1774c47a2c9593014c627f,
         type: 2}

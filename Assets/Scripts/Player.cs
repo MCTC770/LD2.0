@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] bool updateMoveBoundaries = false;
 	[SerializeField] [Range(0.001f, 1f)] float shootFrequency;
 	[SerializeField] PlayerProjectileBehavior[] projectileStorageArray;
+	GameObject playerProjectileParent;
 	int projectileStorageCount = 8;
 	int projectileCounter = 0;
 	bool nextProjectile = true;
@@ -21,9 +22,18 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		InitialPlayerProjectileParentSetUp();
+		projectileStorageArray = new PlayerProjectileBehavior[projectileStorageCount];
 		MoveBoundaries();
 		ProjectileStorageArrayCreator();
 		QualitySettings.vSyncCount = 1;
+	}
+
+	private void InitialPlayerProjectileParentSetUp()
+	{
+		playerProjectileParent = new GameObject();
+		playerProjectileParent.name = "Player Projectile Collector";
+		playerProjectileParent.transform.position = new Vector3(-100, 0, 0);
 	}
 
 	// Update is called once per frame
@@ -38,15 +48,13 @@ public class Player : MonoBehaviour {
 
 	void ProjectileStorageArrayCreator()
 	{
-		projectileStorageArray = new PlayerProjectileBehavior[] 
-		{ playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
-			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
-			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile,
-			playerLaserProjectile, playerLaserProjectile, playerLaserProjectile, playerLaserProjectile };
-		for(int i = 0; i < projectileStorageCount; i++)
+		for (int i = 0; i < projectileStorageCount; i++)
 		{
+			PlayerProjectileBehavior intantiatedProjectile = Instantiate(playerLaserProjectile, Camera.main.ViewportToWorldPoint(new Vector3(0, 1.2f, 0)), Quaternion.identity);
+			intantiatedProjectile.transform.SetParent(playerProjectileParent.transform, false);
+			projectileStorageArray[i] = intantiatedProjectile;
 			projectileStorageArray[i].gameObject.name = "Player Laser " + i;
-			Instantiate(projectileStorageArray[i], new Vector3(-100, 0, 0), Quaternion.identity);
+			projectileStorageArray[i].gameObject.SetActive(false);
 		}
 		print(projectileStorageArray[1]);
 	}
@@ -55,8 +63,9 @@ public class Player : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(shootFrequency);
 		{
-			GameObject.Find("Player Laser " + projectileCounter + "(Clone)").GetComponent<PlayerProjectileBehavior>().move = true;
-			GameObject.Find("Player Laser " + projectileCounter + "(Clone)").transform.position = this.gameObject.transform.position;
+			projectileStorageArray[projectileCounter].gameObject.SetActive(true);
+			projectileStorageArray[projectileCounter].transform.position = this.gameObject.transform.position;
+
 			if (projectileCounter < projectileStorageCount - 1)
 			{
 				projectileCounter += 1;

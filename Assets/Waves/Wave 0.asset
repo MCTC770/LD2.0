@@ -13,14 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1811581438638552, guid: 5bdbc63fb0902f74babebfafc1cad47c,
     type: 2}
-  pathPrefab: {fileID: 1629896787873068, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
+  pathPrefab: {fileID: 1918669560993320, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
   timeBetweenSpawns: 0.5
   spawnRandomFactor: 0.3
-  numberOfEnemies: 5
+  numberOfEnemies: 3
   moveSpeed: 2
   enableBackAndForthPattern: 0
   waypointList:
-  - {fileID: 4745431410872012, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
-  - {fileID: 4110185021169404, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
-  - {fileID: 4271127425422388, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
-  - {fileID: 4466472342838220, guid: f1e25eabd8481b547830e4e3082e7879, type: 2}
+  - {fileID: 4180466105372278, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
+  - {fileID: 4437342303623916, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}
+  - {fileID: 4019767917900946, guid: 2d6716c76317a184bb60d7a56328be04, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4602706639965566}
   - component: {fileID: 212131031619641146}
   - component: {fileID: 60877520987137036}
+  - component: {fileID: 114116496969079728}
   - component: {fileID: 114300113120445644}
   m_Layer: 0
   m_Name: Enemy
@@ -91,6 +92,24 @@ PolygonCollider2D:
       - {x: 0.41549665, y: -0.19901752}
       - {x: 0.43450984, y: -0.23228788}
       - {x: 0.45908868, y: -0.23372602}
+--- !u!114 &114116496969079728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811581438638552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430d22c03b4cc5a4da41822b80b152dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLaserProjectile: {fileID: 114437392036066544, guid: 8e6217361f2e1a84fa1670d199300381,
+    type: 2}
+  health: 100
+  shootFrequencyMin: 1
+  shootFrequencyMax: 5
+  shootProjeciles: 1
+  randomizeShootFrequency: 1
 --- !u!114 &114300113120445644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,8 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f5e37931a0a5d42b792c2cfd471576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: 453597c6f547f6c4d92fb30e359b8ae3, type: 2}
-  enableBackAndForthPattern: 0
+  enemyHP: 1
 --- !u!212 &212131031619641146
 SpriteRenderer:
   m_ObjectHideFlags: 1

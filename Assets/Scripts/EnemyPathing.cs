@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour {
 
+	[SerializeField] int enemyHP = 1;
+
 	WaveConfig waveConfig;
 	List<Transform> waypoints;
 	bool enableBackAndForthPattern;
@@ -85,4 +87,13 @@ public class EnemyPathing : MonoBehaviour {
 			nextWaypoint = waypoints[waypointCounter];
 		}
 	}
+
+	/*public void ReduceEnemyHP(int damage)
+	{
+		enemyHP -= damage;
+		if (enemyHP <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}*/
 }

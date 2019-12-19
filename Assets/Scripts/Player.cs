@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	[SerializeField] bool updateMoveBoundaries = false;
 	[SerializeField] [Range(0.001f, 1f)] float shootFrequency;
 	[SerializeField] PlayerProjectileBehavior[] projectileStorageArray;
+	[SerializeField] int health = 100;
 	GameObject playerProjectileParent;
 	int projectileStorageCount = 8;
 	int projectileCounter = 0;
@@ -56,7 +57,6 @@ public class Player : MonoBehaviour {
 			projectileStorageArray[i].gameObject.name = "Player Laser " + i;
 			projectileStorageArray[i].gameObject.SetActive(false);
 		}
-		print(projectileStorageArray[1]);
 	}
 
 	IEnumerator ProjectileDelay()
@@ -130,7 +130,18 @@ public class Player : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if(collision.gameObject.name == "Enemy")
+		//print(collision.gameObject.GetComponent<EnemyProjectileBehavior>());
+		if (collision.gameObject.name == "Enemy")
+		{
+			Destroy(gameObject);
+		}
+		else if (collision.gameObject.GetComponent<EnemyProjectileBehavior>() != null)
+		{
+			health -= collision.gameObject.GetComponent<EnemyProjectileBehavior>().GetProjectileDamage();
+			Destroy(collision.gameObject);
+		}
+
+		if (health <= 0)
 		{
 			Destroy(gameObject);
 		}
